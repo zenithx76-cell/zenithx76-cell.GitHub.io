@@ -1,0 +1,15 @@
+/* 1. 换成压缩后的图片路径，并优化渲染方式 */
+body {
+  background: url(/img/img2.jpg) center / cover no-repeat fixed !important;
+  /* 开启硬件加速，防止滚动卡顿 */
+  will-change: transform;
+}
+
+/* 2. 保证卡片阅读清晰 */
+#body-wrap {
+  background: rgba(255, 255, 255, 1) !important;
+}
+
+#aside-content .card-widget {
+  background: rgba(255, 255, 255, 1) !important;
+}
