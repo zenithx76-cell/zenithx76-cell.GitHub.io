@@ -1,15 +1,17 @@
-/* 1. 换成压缩后的图片路径，并优化渲染方式 */
+/* 1. 全局背景：使用清晰的 img2.png */
 body {
-  background: url(/img/img2.jpg) center / cover no-repeat fixed !important;
-  /* 开启硬件加速，防止滚动卡顿 */
-  will-change: transform;
+  background: url(/img/img2.png) center / cover no-repeat fixed !important;
 }
 
-/* 2. 保证卡片阅读清晰 */
+/* 2. 中间内容区与卡片：开启半透明磨砂毛玻璃特效 */
 #body-wrap {
-  background: rgba(255, 255, 255, 1) !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
 }
 
+/* 3. 侧边栏卡片同步半透明质感 */
 #aside-content .card-widget {
-  background: rgba(255, 255, 255, 1) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(8px);
 }
