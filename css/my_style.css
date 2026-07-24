@@ -11,19 +11,42 @@ body::before {
   content: '';
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+  background: radial-gradient(circle at center, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.38) 100%);
   pointer-events: none;
   z-index: -1;
 }
 
+/* 极淡扫描线纹理 */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.008) 3px,
+    rgba(255, 255, 255, 0.008) 6px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
 /* 2. 核心容器与卡片：彻底不透明，极高锐度，移除所有模糊滤镜 */
 #body-wrap {
-  background: rgba(10, 12, 18, 0.93) !important; /* 极深的半透明背景，透出底图纹理但不干扰阅读 */
+  background: rgba(10, 12, 18, 0.88) !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  border-radius: 0px; /* 锐利的直角风格，更具工业感 */
-  box-shadow: 0 0 40px rgba(0, 200, 255, 0.1), inset 0 0 1px rgba(255,255,255,0.2); /* 蓝色的幽光阴影 */
-  margin-top: 0; /* 顶部贴合 */
+  border-radius: 0px;
+  box-shadow: 0 0 40px rgba(0, 200, 255, 0.1), inset 0 0 1px rgba(255,255,255,0.2);
+  margin-top: 0;
+}
+
+/* 宽屏适配：减少两侧留白 */
+@media screen and (min-width: 2000px) {
+  .layout {
+    max-width: 70% !important;
+  }
 }
 
 /* 3. 文本与链接：高对比度，亮色系 */
@@ -69,17 +92,24 @@ a:hover {
   box-shadow: 0 0 20px rgba(0, 200, 255, 0.3), 0 5px 15px rgba(0,0,0,0.7);
 }
 
-/* 6. 顶部大标题与副标题：强化文字阴影，更具压迫力 */
+/* 6. 顶部大标题与副标题 */
 #site-title {
   font-size: 5rem !important;
-  text-shadow: 0 0 15px rgba(0, 200, 255, 0.8), 0 0 30px rgba(0, 200, 255, 0.5);
-  letter-spacing: 6px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  background: linear-gradient(180deg, #fff 0%, #a8d8ea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 8px rgba(0, 180, 230, 0.4));
 }
 #site-subtitle {
   font-size: 1.5rem !important;
-  color: #fff !important;
-  text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   line-height: 1.8 !important;
+  letter-spacing: 2px;
 }
 
 /* 7. 滚动条美化：赛博蓝条 */
