@@ -24,9 +24,9 @@ body::after {
   background: repeating-linear-gradient(
     0deg,
     transparent,
-    transparent 3px,
-    rgba(255, 255, 255, 0.008) 3px,
-    rgba(255, 255, 255, 0.008) 6px
+    transparent 2px,
+    rgba(255, 255, 255, 0.025) 2px,
+    rgba(255, 255, 255, 0.025) 4px
   );
   pointer-events: none;
   z-index: 9999;
@@ -106,10 +106,86 @@ a:hover {
 #site-subtitle {
   font-size: 1.5rem !important;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.85) !important;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   line-height: 1.8 !important;
   letter-spacing: 2px;
+}
+
+/* 三行副标题色彩层次：亮白 → 青蓝 → 淡灰 */
+.sub-line-1 {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+.sub-line-2 {
+  color: #7ec8e3;
+  text-shadow: 0 0 10px rgba(126, 200, 227, 0.35);
+}
+.sub-line-3 {
+  color: rgba(255, 255, 255, 0.5);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* 桌面端显示社交图标 */
+#site_social_icons {
+  display: block !important;
+  margin-top: 15px;
+}
+#site_social_icons .social-icon {
+  margin: 0 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+}
+#site_social_icons .social-icon:hover {
+  color: #7ec8e3;
+  text-shadow: 0 0 12px rgba(126, 200, 227, 0.6);
+}
+
+/* banner 底部签名 */
+#site-signature {
+  margin-top: 20px;
+  text-align: center;
+}
+#site-signature span {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.95rem;
+  font-style: italic;
+  letter-spacing: 4px;
+}
+
+/* 标签徽章 */
+.my-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  justify-content: center;
+}
+.tag-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  color: #7ec8e3;
+  border: 1px solid rgba(126, 200, 227, 0.4);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+.tag-badge:hover {
+  color: #fff;
+  background: rgba(126, 200, 227, 0.15);
+  border-color: #7ec8e3;
+}
+
+/* 奖项列表 */
+.my-awards p {
+  margin: 4px 0;
+  padding: 5px 0;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+.my-awards p:last-child {
+  border-bottom: none;
 }
 
 /* 7. 滚动条美化：赛博蓝条 */
