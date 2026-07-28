@@ -1,0 +1,517 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>大一·结：在代码与硅片之间找到了方向 | 寻隅之隙</title><meta name="author" content="Zenithx"><meta name="copyright" content="Zenithx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="大一结束了。回头看，一年前填志愿时对集成电路几乎一无所知，现在却已经可以对着芯片手册看出几分门道。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大一·结：在代码与硅片之间找到了方向">
+<meta property="og:url" content="http://example.com/2026/07/28/hello-world/index.html">
+<meta property="og:site_name" content="寻隅之隙">
+<meta property="og:description" content="大一结束了。回头看，一年前填志愿时对集成电路几乎一无所知，现在却已经可以对着芯片手册看出几分门道。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-07-28%20114336.png">
+<meta property="article:published_time" content="2026-07-28T03:30:00.000Z">
+<meta property="article:modified_time" content="2026-07-28T03:44:46.812Z">
+<meta property="article:author" content="Zenithx">
+<meta property="article:tag" content="ACM">
+<meta property="article:tag" content="大学生活">
+<meta property="article:tag" content="总结">
+<meta property="article:tag" content="随笔">
+<meta property="article:tag" content="集创赛">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-07-28%20114336.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "大一·结：在代码与硅片之间找到了方向",
+  "url": "http://example.com/2026/07/28/hello-world/",
+  "image": "http://example.com/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-07-28%20114336.png",
+  "datePublished": "2026-07-28T03:30:00.000Z",
+  "dateModified": "2026-07-28T03:44:46.812Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Zenithx",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/07/28/hello-world/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.6.2"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '大一·结：在代码与硅片之间找到了方向',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/my_style.css" media="defer" onload="this.media='all'"><style>
+/* 【最大强度】终极暗黑赛博风美化 CSS */
+body {
+  background: url(/img/img2.png) center / cover no-repeat fixed !important;
+  color: #e0e6ed !important;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.38) 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.025) 2px,
+    rgba(255, 255, 255, 0.025) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+#body-wrap {
+  background: rgba(10, 12, 18, 0.88) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-radius: 0px;
+  box-shadow: 0 0 40px rgba(0, 200, 255, 0.1), inset 0 0 1px rgba(255,255,255,0.2);
+  margin-top: 0;
+}
+@media screen and (min-width: 2000px) {
+  .layout {
+    max-width: 70% !important;
+  }
+}
+#aside-content .card-widget {
+  background: rgba(20, 25, 35, 0.95) !important;
+  border-radius: 0px !important;
+  border: 1px solid rgba(0, 200, 255, 0.3) !important;
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.1) !important;
+}
+#recent-posts .recent-post-item {
+  background: rgba(20, 25, 35, 1) !important;
+  border-radius: 0px !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  border: 1px solid transparent;
+  transition: all 0.4s ease;
+}
+#recent-posts .recent-post-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 200, 255, 0.8);
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.3), 0 5px 15px rgba(0,0,0,0.7);
+}
+#site-title {
+  font-size: 5rem !important;
+  font-weight: 700;
+  letter-spacing: 8px;
+  background: linear-gradient(180deg, #fff 0%, #a8d8ea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 8px rgba(0, 180, 230, 0.4));
+}
+#site-subtitle {
+  font-size: 1.5rem !important;
+  font-weight: 400;
+  line-height: 1.8 !important;
+  letter-spacing: 2px;
+}
+.sub-line-1 {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+.sub-line-2 {
+  color: #7ec8e3;
+  text-shadow: 0 0 10px rgba(126, 200, 227, 0.35);
+}
+.sub-line-3 {
+  color: rgba(255, 255, 255, 0.5);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+#site_social_icons {
+  display: block !important;
+  margin-top: 15px;
+}
+#site_social_icons .social-icon {
+  margin: 0 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+}
+#site_social_icons .social-icon:hover {
+  color: #7ec8e3;
+  text-shadow: 0 0 12px rgba(126, 200, 227, 0.6);
+}
+#site-signature {
+  margin-top: 20px;
+  text-align: center;
+}
+#site-signature span {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.95rem;
+  font-style: italic;
+  letter-spacing: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #00c8ff, #007bff);
+  border-radius: 0px;
+}
+.my-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  justify-content: center;
+}
+.tag-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  color: #7ec8e3;
+  border: 1px solid rgba(126, 200, 227, 0.4);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+.tag-badge:hover {
+  color: #fff;
+  background: rgba(126, 200, 227, 0.15);
+  border-color: #7ec8e3;
+}
+.my-awards p {
+  margin: 4px 0;
+  padding: 5px 0;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+.my-awards p:last-child {
+  border-bottom: none;
+}
+::-webkit-scrollbar-track {
+  background: #0a0c12;
+}
+</style>
+<style>body {
+  background-image: url('/img/img2.png') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  color: #e0e6ed !important;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+#body-wrap {
+  background: rgba(10, 12, 18, 0.93) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-radius: 0px !important;
+  box-shadow: 0 0 40px rgba(0, 200, 255, 0.1), inset 0 0 1px rgba(255,255,255,0.2) !important;
+}
+#aside-content .card-widget {
+  background: rgba(20, 25, 35, 0.95) !important;
+  border-radius: 0px !important;
+  border: 1px solid rgba(0, 200, 255, 0.3) !important;
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.1) !important;
+}
+#recent-posts .recent-post-item {
+  background: rgba(20, 25, 35, 1) !important;
+  border-radius: 0px !important;
+  border: 1px solid transparent !important;
+}</style><meta name="generator" content="Hexo 8.1.2"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-07-28%20114336.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">大一·结：在代码与硅片之间找到了方向</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">大一·结：在代码与硅片之间找到了方向</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-28T03:30:00.000Z" title="发表于 2026-07-28 11:30:00">2026-07-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-28T03:44:46.812Z" title="更新于 2026-07-28 11:44:46">2026-07-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="十九岁折返：泉城烟火，衔接-ACM-与芯途"><a href="#十九岁折返：泉城烟火，衔接-ACM-与芯途" class="headerlink" title="十九岁折返：泉城烟火，衔接 ACM 与芯途"></a>十九岁折返：泉城烟火，衔接 ACM 与芯途</h2><p>高考的结束，没有让我极度的愉悦，反而是一种释然与放松，一边是对未来的迷茫，一边是对大学生活的憧憬。</p>
+<h3 id="高考成绩"><a href="#高考成绩" class="headerlink" title="高考成绩"></a>高考成绩</h3><table>
+<thead>
+<tr>
+<th>语文</th>
+<th>数学</th>
+<th>外语</th>
+<th>物理</th>
+<th>化学</th>
+<th>生物</th>
+<th>总分</th>
+<th>省排</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>106</td>
+<td>102</td>
+<td>131</td>
+<td>67</td>
+<td>81</td>
+<td>73</td>
+<td>560</td>
+<td>66874</td>
+</tr>
+</tbody></table>
+<p>凭借着对个人能力的自信，在志愿填报时选择自己填——什么这机构那机构的，都不行，还得是我自己填。</p>
+<p>作为山东人，我无疑是恋家的。填省内，必须填省内，一个省外的我都不填。我把各种高级的带电工科都填了上去。在录取的前一天晚上，我梦到了我录取到了 QLU 的网络空间安全。可惜，当我查的时候，只梦对了一半——我看着录取结果：<strong>QLU——集成电路设计与集成系统</strong>。心里其实并没有太高兴的感觉，甚至还有转专业的想法。</p>
+<p><img src="/img/f07582686c18804fd7f085dd0c7d2811.jpg" alt="录取结果"></p>
+<p>而当时的决定，在一年后的我看来，恰恰是再正确不过的了……</p>
+<hr>
+<h2 id="梦开始的地方"><a href="#梦开始的地方" class="headerlink" title="梦开始的地方"></a>梦开始的地方</h2><p>大概在录取后一个月，我总觉得有点闲了。偶然间我在校园迎新的界面发现了一个社团——<strong>网络运维算法部</strong>。</p>
+<p>这里，是我梦开始的地方……</p>
+<p>在假期里，我详细学习了 C++ 的基础语法。在初步利用 C++ 解题的时候，总有一种不熟悉的感觉，可能我并没有极高的天赋吧……</p>
+<p>开学了，完成了开学报到，认识了一个老济南人——ZQB。这位的性格无疑和我是类似的，我们的联系在接下来一年里愈发紧密……</p>
+<p>大一上学期的绝大部分时间，我都投入在了我的 ACM 中。加入了网络运维算法部，在这里，我结识了非常多的计算机的朋友，大家的能力似乎都在我之上，也让我对大学生活有了新的认识。社团的生活无疑是丰富多彩的，我对 C++ 算法无疑是非常热爱与痴迷的，我愿意投入很多精力在这上面。</p>
+<p>我们常常熬到 12 点回宿舍，有时也为了打 Codeforces 的 Div3 到凌晨一点……</p>
+<p><img src="/img/cc42ba8c492d8f5ce6e5539f2955f856.jpg" alt="Codeforces 刷题"></p>
+<p>看着自己的 CF 从 0 到 1100 多分，我无疑是快乐的……</p>
+<hr>
+<h2 id="冬日·初雪"><a href="#冬日·初雪" class="headerlink" title="冬日·初雪"></a>冬日·初雪</h2><p>12 月的漫天大雪，我们打了第一次雪仗……</p>
+<p><img src="/img/76dd9f4b86e210af666243047bd415db.jpg" alt="打雪仗"></p>
+<p>还堆了雪人：</p>
+<p><img src="/img/d567a209869319067bc14e5765df12fc.jpg" alt="堆雪人"></p>
+<p>图书馆楼前，夜晚的 12 点，天空在洁白的雪地之上，衬托得相当明亮。我们在雪地上写下了——<strong>组一辈子的算法部</strong>。</p>
+<h3 id="跨年"><a href="#跨年" class="headerlink" title="跨年"></a>跨年</h3><p>12 月 31 号，我们相约在泉城广场跨年……</p>
+<p>我们玩了密室，在芙蓉街吃了小吃，一起在气球上写下自己对新的一年的愿望……</p>
+<p><img src="/img/58fb198409e884018f1f7bbb2f7443a9.jpg" alt="跨年夜1"></p>
+<p><img src="/img/d841ec33bb1924539118cc586c65d46c.jpg" alt="跨年夜2"></p>
+<p>12 点整时，我们从恒隆广场出发，慢慢沿步行街走着……到了解放阁，我们放飞了自己的气球，看着气球缓缓飞向天空，我的思绪也随之飘远……</p>
+<p>我们在网吧休息，第二天一起去看了电影《疯狂动物城二》。</p>
+<hr>
+<h2 id="期末与寒假"><a href="#期末与寒假" class="headerlink" title="期末与寒假"></a>期末与寒假</h2><p>紧接着是期末考试，也是随便一考，用小程序查了成绩……让我放弃了转专业的想法。不是第二，不是第三，也不是第四……我真的不知道这是好事还是坏事。学校的预推免已经下来了，如果我没有这么高的绩点，如果我在 5 名开外的话，我或许比现在活得更加自由……可能烦恼会比现在少一些……</p>
+<p>寒假里，我还是把大部分精力用在了 ACM 上，为下学期的全国邀请赛和蓝桥杯做准备……</p>
+<p>途中，我回高中和同学一起看了老师：</p>
+<p><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260728104806_365_21.jpg" alt="回高中1"></p>
+<p><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260728104817_366_21.jpg" alt="回高中2"></p>
+<p>给高三班主任买的颜悦，和高三的同学叙叙旧。唯一可惜的一点就是没有见到我那个高二的班主任，也是在数学上对我有很大影响的男人。如果有机会的话，我还是愿意再听他讲一讲……</p>
+<hr>
+<h2 id="大一下：集创赛与-ACM"><a href="#大一下：集创赛与-ACM" class="headerlink" title="大一下：集创赛与 ACM"></a>大一下：集创赛与 ACM</h2><p>开学了，在开学的第二天，我得到了一个令人意外的消息——<strong>我要参加集创赛了</strong>。这也确实是我们集成电路专业最对口的，且对于我来说极其重要的比赛……</p>
+<p>我们要做一个项目出来，这对于大一的我来说，无疑是重要的而且具有挑战性的。也是这个项目，让我与我们学部以及班级里的能人异士建立了紧密的联系……</p>
+<p>途中也是遇到了各种各样的困难：通信传输为什么有问题？跨时钟域怎么解决啊？模型为啥总是识别不到啊？我们也耗了很多心力去解决。<strong>功夫是不负有心人的</strong>，我们团队是有能力的，三个月我们把大致内容做了出来，并且都晋级了华北总决赛。在这里，集创赛稍微告一段落了……</p>
+<hr>
+<h2 id="CCPC-秦皇岛全国邀请赛"><a href="#CCPC-秦皇岛全国邀请赛" class="headerlink" title="CCPC 秦皇岛全国邀请赛"></a>CCPC 秦皇岛全国邀请赛</h2><p>这是我的第一次比赛，也给我留下了不可磨灭的印象。</p>
+<p>第一天来的时候，阴雨连绵，我们在宾馆稍作休息，晚上去吃了熙成烧烤：</p>
+<p><img src="/img/1b7b094f1207a89207344dcbad29090e.jpg" alt="秦皇岛烧烤"></p>
+<p>第二天的热身赛，我无疑是紧张的，手忙脚乱。为此我队长还骂了我一顿：</p>
+<blockquote>
+<p>“平时做题也不少啊，做出来的也挺多啊，怎么一到比赛，这么紧张？不用想获不了奖，还能获不了奖。”</p>
+</blockquote>
+<p>此时队长已经红红的了。我也不知道为啥这么紧张（其实是我的通病了）……赛后，我们在东秦的校园里逛了逛，去海边吹吹海风，消散心情……</p>
+<p>晚上我们一起结伴去了一个我超级喜欢的公园——<strong>西港花园</strong>。</p>
+<p>秦皇岛的 5 月底是十分凉爽的。人不多，大家结伴走在公园里，随着天色渐晚，公园里一盏盏灯亮了起来，海风迎面吹来，落日的余晖洒在我的脸上，与旁边各种富有艺术感的小型建筑结合，令我倍感惬意……</p>
+<p><img src="/img/abc223dd7d4710168c7af7fef0f7c216.jpg" alt="西港花园1"></p>
+<p><img src="/img/a9e7e0a90da7f19c5929b42560f69d9e.jpg" alt="西港花园2"></p>
+<p><img src="/img/84e32c30f338cef959a51bd2d955c616.jpg" alt="西港花园3"></p>
+<p>第二天比赛，有了昨日的教训，我做题也不紧张了。40 分钟和队长写了 4 个题，最终队长一锤定音，拿下 5 题，拿到了<strong>第一个 CCPC 铜牌</strong>！🎉</p>
+<p>赛后我们吃了大排档，去了秦皇小巷以及山海关……</p>
+<p><img src="/img/d834580e0de41cf9ffce96c19ae69371.jpg" alt="赛后1"></p>
+<p><img src="/img/300c74e766408254feeea2826c5837db.jpg" alt="赛后2"></p>
+<hr>
+<h2 id="蓝桥杯-贵州-CCPC"><a href="#蓝桥杯-贵州-CCPC" class="headerlink" title="蓝桥杯 &amp; 贵州 CCPC"></a>蓝桥杯 &amp; 贵州 CCPC</h2><p>一周后，我还参加了蓝桥杯国赛和贵州 CCPC 全国邀请赛……</p>
+<blockquote>
+<p>为什么每次去比赛都下雨？？？？？？</p>
+</blockquote>
+<p>这也是我第一次坐飞机。飞机的感觉是没有高铁舒服的，太颠簸，而且我恐高。</p>
+<p>贵州无疑是比秦皇岛丰富的。我们尝了贵州的特色美食——烙锅，还有炒菜（贵州辣椒真的不辣！），天气也不热。就是比赛被一堆小猴子给卡了……铁牌收场，唉……</p>
+<hr>
+<h2 id="集创赛冲刺"><a href="#集创赛冲刺" class="headerlink" title="集创赛冲刺"></a>集创赛冲刺</h2><p>比赛结束后，继续准备集创赛。我们又再次对不同的地方进行优化，制作 PPT 准备答辩……</p>
+<p>期间还有个比较耗费时间的东西叫<strong>期末考试</strong>。好担心我的大学物理，我大概学了一个星期……真的能过吗？？</p>
+<p>考场上一看，稳了，绝对稳了……</p>
+<p>期末考试结束，整体感觉尚可。</p>
+<p>再次美化 PPT，准备答辩……</p>
+<p>7 月 20 号，大家一起相约去了<strong>山东大学软件园校区</strong>（为何这么远啊我靠）。答辩顺利，但是感觉问的问题有点刁钻且奇怪……</p>
+<p>下午大家一起逛了校园，参观了集成电路学院。看完后，山大不愧是微电子 28 所，确实在资源上与成果上有很大优势啊。</p>
+<p><img src="/img/e8e8e7db84ff15a304eda2ab5deb3fd0.jpg" alt="山大参观1"></p>
+<p><img src="/img/2ac838d1a4ac83d59c5c716ebb0a3db5.jpg" alt="山大参观2"></p>
+<p>第二天颁奖，我们去了山大中心校区。</p>
+<p>看到结果无疑是痛苦的——<strong>省二</strong>。</p>
+<p>没办法了，明年再战吧……</p>
+<p>中午，我们去吃了自助，吃得很爽，酣畅淋漓。下午我们玩了剧本杀——木夕僧，就不该选这么难的，从三点半一直到晚上八点还没结束，太烧脑了。</p>
+<hr>
+<h2 id="大一的句号"><a href="#大一的句号" class="headerlink" title="大一的句号"></a>大一的句号</h2><p>随之，期末成绩公布，下降了一名，有点惆怅了。</p>
+<p>绩点没弄上去，集创赛也只有个省奖。也罢，现在才大一，我还有两年，去做很多事，不急的……</p>
+<p>到这里，大一基本上就画上了圆满的句号：</p>
+<ul>
+<li><strong>ACM</strong> 使我的思维保持活跃</li>
+<li><strong>集创赛</strong> 使我具备了项目的能力</li>
+</ul>
+<p>大二我要更加注重专业课的学习，在项目与思维能力上更进一步……</p>
+<hr>
+<blockquote>
+<p><strong>大一·结：在代码与硅片之间找到了方向。十九岁的折返，不是倒退，而是为了更好地出发。</strong></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Zenithx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2026/07/28/hello-world/">http://example.com/2026/07/28/hello-world/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">寻隅之隙</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a><a class="post-meta__tags" href="/tags/%E6%80%BB%E7%BB%93/">总结</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%B4%BB/">大学生活</a><a class="post-meta__tags" href="/tags/ACM/">ACM</a><a class="post-meta__tags" href="/tags/%E9%9B%86%E5%88%9B%E8%B5%9B/">集创赛</a></div><div class="post-share"><div class="social-share" data-image="/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-07-28%20114336.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/28/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="模型训练注意事项"><img class="cover" src="/img/img2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">模型训练注意事项</div></div><div class="info-2"><div class="info-item-1">为什么需要自己训练模型现在用的 rfdetr-nano 是通用模型，它见过很多普通的 person，所以能直接检测行人。 但如果你的场景比较特殊，比如：  监控摄像头很高 人很小 夜间画面 雨天 工厂制服 红外摄像头 低清视频 人被遮挡 只想检测某个区域的人  通用模型可能不够稳。这时候你训练自己的模型，就是告诉它：  在我的真实画面里，什么样子算 person。   一、训练集的收集1. 好数据长什么样好的数据包括：  ☀️ 白天 🌙 晚上 ☁️ 阴天 💡 强光 🌑 背光 🚶 近处的人 🔭 远处的人 🧍 正面的人 🧍‍♂️ 侧面的人 🧍‍♀️ 背面的人 👥 多人 👤 少人 🙈 遮挡 🏚️ 空场景   注意：空场景也要放。 比如没有人的走廊、没有人的路口，这能帮助模型学会——没有人时不要乱框。  2. 什么图片不适合放太多不要只收集”特别漂亮、特别清楚”的图片。比如全是这种：  正面站着的人 光线很好 人很大 背景简单  这样训练出来的模型在真实监控里可能不好用。 真实场景通常是：  模糊 远 小 遮挡 角度奇怪 光线变化   所以训练数据要接近真实使用场...</div></div></div></a><a class="pagination-related" href="/2026/07/27/%E5%85%B3%E4%BA%8Eworkflow%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%80%BB%E7%BB%93/" title="关于 Workflow 的工作流学习以及基础知识总结"><img class="cover" src="/img/passage2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">关于 Workflow 的工作流学习以及基础知识总结</div></div><div class="info-2"><div class="info-item-1"> 视觉模型网站：Roboflow   一、熟悉工作流1. Workflow 的工作流搭建1输入 → 模型 → 可视化 → 输出  2. 模型选择1) 添加 Object Detection Model因为要适配 NPU 与新手学习，选择 RF-DETR Nano。 在模型的 Additional Properties 里设置：  Class Filter &#x3D; person（只检测行人）  2) 添加 Bounding Box Visualization把模型检测到的人画框。 3) 添加 Label Visualization在框旁边显示类别和置信度，比如： 1person 0.87  完整格式：  检测结果：   二、Confidence（置信度）1. Confidence 是什么当模型看到一个目标时，它会输出类似这样的结果： 12345678&#123;  &quot;class&quot;: &quot;person&quot;,  &quot;confidence&quot;: 0.87,  &quot;x&quot;: 320,  &quot;y&quot;: ...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/my_head.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Zenithx</div><div class="author-info-description">王宗兴，山东济南人，就读于齐鲁工业大学（山东省科学院）集成电路专业。热爱算法竞赛与集成电路设计，喜欢在代码与硅片之间寻找最优解。正在向FPGA与ARM以及C++算法发起更高的冲击。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:3395157260@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><div class="my-tags">
+  <span class="tag-badge">C++</span>
+  <span class="tag-badge">Verilog</span>
+  <span class="tag-badge">视觉算法</span>
+  <span class="tag-badge">OpenCV</span>
+  <span class="tag-badge">ARM</span>
+</div>
+<div class="my-awards">
+  <p>CCPC 秦皇岛邀请赛 铜牌</p>
+  <p>蓝桥杯 C++组 国三</p>
+  <p>集成电路创新创业大赛 省二 <span style="font-size:0.7rem;opacity:0.5">(一生の痛)</span></p>
+</div>
+</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B9%9D%E5%B2%81%E6%8A%98%E8%BF%94%EF%BC%9A%E6%B3%89%E5%9F%8E%E7%83%9F%E7%81%AB%EF%BC%8C%E8%A1%94%E6%8E%A5-ACM-%E4%B8%8E%E8%8A%AF%E9%80%94"><span class="toc-number">1.</span> <span class="toc-text">十九岁折返：泉城烟火，衔接 ACM 与芯途</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E8%80%83%E6%88%90%E7%BB%A9"><span class="toc-number">1.1.</span> <span class="toc-text">高考成绩</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%A6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="toc-number">2.</span> <span class="toc-text">梦开始的地方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%AC%E6%97%A5%C2%B7%E5%88%9D%E9%9B%AA"><span class="toc-number">3.</span> <span class="toc-text">冬日·初雪</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%A8%E5%B9%B4"><span class="toc-number">3.1.</span> <span class="toc-text">跨年</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%9F%E6%9C%AB%E4%B8%8E%E5%AF%92%E5%81%87"><span class="toc-number">4.</span> <span class="toc-text">期末与寒假</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E4%B8%80%E4%B8%8B%EF%BC%9A%E9%9B%86%E5%88%9B%E8%B5%9B%E4%B8%8E-ACM"><span class="toc-number">5.</span> <span class="toc-text">大一下：集创赛与 ACM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CCPC-%E7%A7%A6%E7%9A%87%E5%B2%9B%E5%85%A8%E5%9B%BD%E9%82%80%E8%AF%B7%E8%B5%9B"><span class="toc-number">6.</span> <span class="toc-text">CCPC 秦皇岛全国邀请赛</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%93%9D%E6%A1%A5%E6%9D%AF-%E8%B4%B5%E5%B7%9E-CCPC"><span class="toc-number">7.</span> <span class="toc-text">蓝桥杯 &amp; 贵州 CCPC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E5%88%9B%E8%B5%9B%E5%86%B2%E5%88%BA"><span class="toc-number">8.</span> <span class="toc-text">集创赛冲刺</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E4%B8%80%E7%9A%84%E5%8F%A5%E5%8F%B7"><span class="toc-number">9.</span> <span class="toc-text">大一的句号</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/07/28/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="模型训练注意事项"><img src="/img/img2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="模型训练注意事项"/></a><div class="content"><a class="title" href="/2026/07/28/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="模型训练注意事项">模型训练注意事项</a><time datetime="2026-07-28T06:00:00.000Z" title="发表于 2026-07-28 14:00:00">2026-07-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/07/28/hello-world/" title="大一·结：在代码与硅片之间找到了方向"><img src="/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-07-28%20114336.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="大一·结：在代码与硅片之间找到了方向"/></a><div class="content"><a class="title" href="/2026/07/28/hello-world/" title="大一·结：在代码与硅片之间找到了方向">大一·结：在代码与硅片之间找到了方向</a><time datetime="2026-07-28T03:30:00.000Z" title="发表于 2026-07-28 11:30:00">2026-07-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/07/27/%E5%85%B3%E4%BA%8Eworkflow%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%80%BB%E7%BB%93/" title="关于 Workflow 的工作流学习以及基础知识总结"><img src="/img/passage2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于 Workflow 的工作流学习以及基础知识总结"/></a><div class="content"><a class="title" href="/2026/07/27/%E5%85%B3%E4%BA%8Eworkflow%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%80%BB%E7%BB%93/" title="关于 Workflow 的工作流学习以及基础知识总结">关于 Workflow 的工作流学习以及基础知识总结</a><time datetime="2026-07-27T11:33:00.000Z" title="发表于 2026-07-27 19:33:00">2026-07-27</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Zenithx</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.6.2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.6.2"></script><script src="/js/main.js?v=5.6.2"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,200,255" opacity="0.6" zIndex="-1" count="88" mobile="false" src="https://unpkg.com/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
